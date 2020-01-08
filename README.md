@@ -25,6 +25,6 @@ go get github.com/anvlad11/dd-alicization
 * `GLAGOL_CONFIRM_CONNECTION` - подверждение подключения к станции голосом, 1 или 0
 * `HTTP_HOST` - хост, на котором будет подниматься HTTP Gateway, по-умолчанию :58080 (то же самое, что и localhost:58080)
 
-### HTTP Gateway
+## HTTP Gateway
 
 Частичное описание API для работы с Станцией через гейтвей - https://documenter.getpostman.com/view/525400/SWLfd8et?version=latest
