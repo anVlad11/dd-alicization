@@ -3,7 +3,7 @@ package glagol
 import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-	uuid "github.com/satori/go.uuid"
+	"github.com/google/uuid"
 	"os"
 	"time"
 )
@@ -78,7 +78,7 @@ func SendCommand(ctx *gin.Context) {
 
 	payload := DeviceRequestWrapper{
 		ConversationToken: glagolCtxO.Device.Token,
-		Id:                uuid.NewV4().String(),
+		Id:                uuid.New().String(),
 		SentTime:          time.Now().UnixNano(),
 		Payload:           msg,
 	}

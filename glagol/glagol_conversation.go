@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"encoding/pem"
 	"errors"
+	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
-	uuid "github.com/satori/go.uuid"
 	"log"
 	"net/http"
 	"net/url"
@@ -88,10 +88,9 @@ func (conversation *Conversation) runWsConnection() error {
 	ticker := time.NewTicker(time.Second)
 	defer ticker.Stop()
 
-	guid := uuid.NewV4()
 	pingMessage := DeviceRequestWrapper{
 		ConversationToken: conversation.Device.Token,
-		Id:                guid.String(),
+		Id:                uuid.New().String(),
 		SentTime:          time.Now().UnixNano(),
 		Payload: map[string]interface{}{
 			"command": "ping",
@@ -105,7 +104,7 @@ func (conversation *Conversation) runWsConnection() error {
 	if os.Getenv("GLAGOL_CONFIRM_CONNECTION") == "1" {
 		connectionConfirmationRequest := DeviceRequestWrapper{
 			ConversationToken: conversation.Device.Token,
-			Id:                guid.String(),
+			Id:                uuid.New().String(),
 			SentTime:          time.Now().UnixNano(),
 			Payload: map[string]interface{}{
 				"command": "sendText",
