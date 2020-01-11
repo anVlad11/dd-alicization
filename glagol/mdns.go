@@ -33,8 +33,9 @@ func PopulateDevicesFromLocalDiscovery(devices DeviceList) (DeviceList, error) {
 			/**
 			 Т.к. у меня только Я.Станция, то ограничил доступные платформы.
 			 Слышал, что Я.Модуль так же работает, но мне не на чем проверить.
+			upd: я проверил, работает :)
 			**/
-			if platform, ok := entryMap["platform"]; ok && platform == "yandexstation" {
+			if platform, ok := entryMap["platform"]; ok && platform == "yandexstation" || platform == "yandexmodule"{
 				for _, device := range devices {
 					if device.Id == entryMap["deviceId"] {
 						device.Discovery = DeviceLocalDiscovery{

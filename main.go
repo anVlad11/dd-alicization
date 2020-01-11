@@ -3,12 +3,17 @@ package main
 import (
 	"fmt"
 	"github.com/anvlad11/dd-alicization/glagol"
+	"github.com/joho/godotenv"
+	"log"
 	"os"
 )
 
 func main() {
 	var err error
 
+	if err := godotenv.Load(".env.local"); err != nil {
+		log.Print("No .env file found")
+	}
 	//TODO: Получение токена по логину и паролю
 	yandexApiToken := os.Getenv("YANDEX_OAUTH_TOKEN")
 
